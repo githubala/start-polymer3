@@ -13,15 +13,23 @@
 // so no need to change the symbol. 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
-class LazyElement extends PolymerElement {
+class TncFooter extends PolymerElement {
   static get template () {
     // Template getter must return an instance of HTMLTemplateElement.
     // The html helper function makes this easy.
     return html`
-      <p>You like pie.</p>
+      <style>
+      .tncFooter {
+        padding: 30px;
+        margin-top: 50px;
+        background: #fff;
+      }
+      </style>
+
+      <div class="tncFooter">this is footer</div>
     `;
   }
 }
 
 // Register the element with the browser.
-customElements.define('lazy-element', LazyElement);
+window.customElements.define('tnc-footer', TncFooter);

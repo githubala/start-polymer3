@@ -6,8 +6,13 @@
   "author": "The Polymer Project Authors",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "@polymer/app-route": "^3.0.2",
+    "@polymer/iron-ajax": "^3.0.1",
+    "@polymer/iron-pages": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-checkbox": "latest",
     "@polymer/polymer": "latest",
-    "@webcomponents/webcomponentsjs": "latest"
+    "@webcomponents/webcomponentsjs": "latest",
+    "dom-bind": "^1.0.0"
   }
 }
