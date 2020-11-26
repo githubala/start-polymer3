@@ -1,12 +1,6 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/paper-button/paper-button.js'; 
-
-
-
-let listOfselectedProducts = [{  
-  "prodName": "",
-  "location": ""
-}];
+import "./product-element.js";
 
 
 let listOfProducts = [
@@ -154,10 +148,11 @@ let listOfProducts = [
 class ProductsList extends PolymerElement {
   constructor() {
     super();
+    this._reset();  
   }
   ready(){
     super.ready();
-    this.isCartEmpty = false;
+    this.isCartEmpty = true;
   }
 
   static get template() {
@@ -262,6 +257,10 @@ class ProductsList extends PolymerElement {
 <div class="productSelection-Wrapper">
    <div>
       <template is="dom-repeat" items="{{products}}">
+          <product-element product={{item}}></product-element>
+      </template>
+
+      <template is="dom-repeat" items="{{products}}">
          <div class="productInfo">
             <div class="productImg">
                <img src="{{item.image}}">
@@ -298,12 +297,12 @@ class ProductsList extends PolymerElement {
       </template>
    </div>
    <div class="checkOut-section">
-      <template is="dom-if" if="{{!isCartEmpty}}">
+      <template is="dom-if" if="{{isCartEmpty}}">
          <div>
             <img class="cartImg" src="src/assets/images/emptycart.png">
          </div>
       </template>
-      <template is="dom-repeat" items="{{selectedProductsList}}">
+      <template is="dom-repeat" items="{{listOfselectedProducts}}">
          <div>
             <div>{{item.prodName}}</div>
             <div>{{item.location}}</div>
@@ -313,8 +312,9 @@ class ProductsList extends PolymerElement {
          <paper-button raised class="indigo"  on-click="handleClick2">Check Out</paper-button>
       </div>
    </div>
+   
 </div>
-        `;
+`;
   }
 
   static get properties() {
@@ -333,12 +333,6 @@ class ProductsList extends PolymerElement {
         type: Array,
         value: listOfProducts,
         notify: true
-      },
-      selectedProductsList: {
-        type: Array,
-        value: listOfselectedProducts,
-        notify: true,        
-        observer: "_selProds"
       }
     }
   }
@@ -348,27 +342,22 @@ class ProductsList extends PolymerElement {
         prodName:" ",
         location: " "
       }
+      //alert(obj.l)
     obj.prodName = e.model.item.productName;
     obj.location = e.model.item.location;
-    listOfselectedProducts.push(obj);
-    console.log(listOfselectedProducts);
-    if(listOfselectedProducts.length){
-      this.isCartEmpty = true;
-    } 
-    
+    this.push('listOfselectedProducts', obj);
+       this.isCartEmpty = false;
+    console.log(this.listOfselectedProducts);
   }
   handleClick2() {
     this.showHeader = true;
     this.set('route.path', '/check-out')
   }
-  _checkHeader() {
-    console.log(this.showHeader+"  is show header");
-  }
-  _checkCart(){
-    console.log(this.isCartEmpty+" is cartempty ");
-  }
-  _selProds(){
-    console.log(this.selectedProductsList+" is selected products ");
+  // _checkHeader() {
+  //   console.log(this.showHeader+"  is show header");
+  // }
+  _reset(){
+    this.listOfselectedProducts = [];
   }
 }
 
