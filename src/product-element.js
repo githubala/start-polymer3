@@ -24,6 +24,13 @@ class ProductElement extends PolymerElement {
             margin:0 auto;
             margin-bottom: 35px;
         }
+        .productInfo paper-button{
+            margin-top: 0;
+            border: 1px solid lightgrey;
+            height: 50px;
+            width: 150px;
+            border-radius: 15px;
+        }
         .productImg {    
             left: 0px;
             top: 0px;
@@ -90,9 +97,6 @@ class ProductElement extends PolymerElement {
           right: 430px; 
           text-align: center;
         }
-        .checkOut-section .cartImg{ 
-            width: 200px;
-        }
         .cartImg {
           width: 200px;
         }
@@ -114,7 +118,7 @@ class ProductElement extends PolymerElement {
                     <div class="ProdAction">
                     <div class="prodName">
                         <h2 id="">[[item.productName]]</h2>
-                        <papper-button on-click="addToCart">Add Product</papper-button>
+                        <paper-button on-click="addToCart">Add</paper-button>
                     </div>
                     <div class="prodDetails">
                         <div>

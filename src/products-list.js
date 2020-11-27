@@ -200,6 +200,9 @@ class ProductsList extends PolymerElement {
           .selItem {
             margin-bottom: 15px;
           }
+          .checkOut-section .cartImg{ 
+              width: 200px;
+          }
           </style>
 
 <app-location route="{{route}}"></app-location>
@@ -239,8 +242,7 @@ class ProductsList extends PolymerElement {
         observer: "_checkHeader"
       },
       isCartEmpty: {
-        type: Boolean,
-        //notify: true,
+        type: Boolean
       },
       products: {
         type: Array,

@@ -10,7 +10,7 @@ class CheckOut extends PolymerElement {
     constructor(){
         super();
     }
-    ready(){alert(this.passItems);
+    ready(){
       super.ready();
       this.choosePaymentMethod = false;
       // this.wallet = true;
