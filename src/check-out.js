@@ -94,7 +94,8 @@ class CheckOut extends PolymerElement {
             }
             .billFormat .billright > div{
               padding-bottom: 10px;
-              margin-top: 10px
+              margin-top: 10px;
+              text-align: right;
             }
             .taxNtotal {
               display: flex;                            
@@ -103,6 +104,7 @@ class CheckOut extends PolymerElement {
             .taxNtotal div > div {
               padding-bottom: 10px;
               margin-top: 10px;
+              text-align: right;
             }
             .taxNtotal div > div:last-child {
               font-weight: 600;
