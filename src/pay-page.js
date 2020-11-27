@@ -9,17 +9,17 @@ import "./products-list.js";
 import "./tnc-footer.js";
 
 class PayPage extends PolymerElement {
-
-  // ready() {
-  //   super.ready();
-  //   this.addEventListener('headerChangeEvt', function (e) {
-  //     //(alert(e.detail.changeHeader+"pay-page  "));
-  //    this.showHeader = e.detail.changeHeader;
-  //    alert(this.showHeader+" showheader")
-  //  })
-  // }
     constructor(){
         super();
+    }
+    ready() {
+      super.ready();
+      this.addEventListener('checkOutItem', function (e) {
+        this.checkOutProducts = e.detail.checkOutObj;
+        this.checkOutProducts.forEach(function(i){
+          alert(i.prodName);
+        })
+     })
     }    
 
     static get template () {
@@ -42,9 +42,8 @@ class PayPage extends PolymerElement {
             <iron-pages selected="[[page]]" attr-for-selected="name" selected-attribute="visible" fallback-selection="404">            
             <products-list name="productslist" show-header="{{showHeader}}"></products-list>
                        
-            <check-out name="checkout"></check-out>
-
-            </iron-pages>     
+            <check-out name="checkout" items={{checkOutProducts}}></check-out>
+            </iron-pages> 
             <tnc-footer></tnc-footer>        
           </div>  
         `;
@@ -62,6 +61,7 @@ class PayPage extends PolymerElement {
             value: false,
             notify: true
           }
+          
         }
       }
   
@@ -89,6 +89,10 @@ class PayPage extends PolymerElement {
 			default:
 			this.page = 'checkout';
 	  }
+  }
+  
+  _resetObj(){
+    this.checkOutProducts = [];
   }
 }
 

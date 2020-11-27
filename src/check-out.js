@@ -10,11 +10,11 @@ class CheckOut extends PolymerElement {
     constructor(){
         super();
     }
-    ready(){
+    ready(){alert(this.passItems);
       super.ready();
       this.choosePaymentMethod = false;
-      this.wallet = true;
-      this.netBanking = false;
+      // this.wallet = true;
+      // this.netBanking = false;      
     }
 
     static get template(){
@@ -203,14 +203,16 @@ class CheckOut extends PolymerElement {
             <div class="itemsReviews">
               <div class="checkOutItems">
                 <h4>Selected Items</h4>
-                <div class="item">
+                <template is="dom-repeat" items="{{items}}">
+                    <div class="item">
+                    <p>[[item.prodName]]</p>
+                    <paper-button>- 1 +</paper-button>
+                    </div>
+                </template>
+                <!--<div class="item">
                 <p>Monika Stationary Sofa Chocolate</p>
                 <paper-button>- 1 +</paper-button>
-                </div>
-                <div class="item">
-                <p>Monika Stationary Sofa Chocolate</p>
-                <paper-button>- 1 +</paper-button>
-                </div>
+                </div>-->
 
               </div>
               <div class="billDtls">

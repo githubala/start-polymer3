@@ -90,6 +90,9 @@ class ProductElement extends PolymerElement {
           right: 430px; 
           text-align: center;
         }
+        .checkOut-section .cartImg{ 
+            width: 200px;
+        }
         .cartImg {
           width: 200px;
         }
@@ -156,7 +159,6 @@ class ProductElement extends PolymerElement {
        obj.prodName = e.model.item.productName;
        obj.location = e.model.item.location;
        this.push('listOfselectedProducts', obj);
-          //this.isCartEmpty = false;
        console.log(this.listOfselectedProducts);
 
        var customEvent = new CustomEvent('listEvt', {

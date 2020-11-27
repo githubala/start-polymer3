@@ -152,6 +152,7 @@ class ProductsList extends PolymerElement {
   }
   ready(){
     super.ready();
+    this.isCartEmpty = true;
     this.addEventListener('listEvt', function (e) {
       var obj = {
         prodName:" ",
@@ -162,8 +163,9 @@ class ProductsList extends PolymerElement {
         obj.location = n.location
       });
       this.push('listOfselectedProducts', obj);
+      this.isCartEmpty = false;
    })
-    this.isCartEmpty = true;
+    
   }
 
   static get template() {
@@ -179,6 +181,25 @@ class ProductsList extends PolymerElement {
               margin: 30px auto;
               width: 960px;
           }
+          .checkoutBtn {
+            text-align: center;
+          }
+          .checkoutBtn paper-button {
+            background: #4272b0;
+            color: #fff;
+            font-weight: 600;
+            margin-top: 20px;
+            border-radius: 0;
+            font-size: 14px;
+          }
+          .checkOut-section {
+            margin-left: 20px;
+            border: 1px solid lightgrey;
+            padding: 5px;
+          }
+          .selItem {
+            margin-bottom: 15px;
+          }
           </style>
 
 <app-location route="{{route}}"></app-location>
@@ -193,14 +214,16 @@ class ProductsList extends PolymerElement {
             <img class="cartImg" src="src/assets/images/emptycart.png">
          </div>
       </template>
+      <ol>
       <template is="dom-repeat" items="{{listOfselectedProducts}}">
-         <div>
+         <li class="selItem">
             <div>{{item.prodName}}</div>
             <div>{{item.location}}</div>
-         </div>
+         </li>
       </template>
-      <div>
-         <paper-button raised class="indigo"  on-click="handleClick2">Check Out</paper-button>
+      </ol>
+      <div class="checkoutBtn">
+         <paper-button raised class="indigo"  on-click="checkOutList">Check Out</paper-button>
       </div>
    </div>
    
@@ -217,8 +240,7 @@ class ProductsList extends PolymerElement {
       },
       isCartEmpty: {
         type: Boolean,
-        notify: true,
-        observer: "_checkCart"
+        //notify: true,
       },
       products: {
         type: Array,
@@ -227,27 +249,16 @@ class ProductsList extends PolymerElement {
       }
     }
   }
-
-  addProduct(e){ 
-     let obj = {
-        prodName:" ",
-        location: " "
-      }
-    obj.prodName = e.model.item.productName;
-    obj.location = e.model.item.location;
-    this.push('listOfselectedProducts', obj);
-       this.isCartEmpty = false;
-    console.log(this.listOfselectedProducts);
-
-    
-  }
-  handleClick2() {
+  checkOutList(e) {
     this.showHeader = true;
-    this.set('route.path', '/check-out')
+    var customEvt = new CustomEvent('checkOutItem', {
+      bubbles: true, 
+      composed: true,
+      detail: {checkOutObj: this.listOfselectedProducts}
+    });
+    this.dispatchEvent(customEvt);
+    this.set('route.path', '/check-out');
   }
-  // _checkHeader() {
-  //   console.log(this.showHeader+"  is show header");
-  // }
   _reset(){
     this.listOfselectedProducts = [];
   }
