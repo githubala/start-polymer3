@@ -5,8 +5,7 @@ import '@polymer/paper-button/paper-button.js';
 class ProductElement extends PolymerElement {
     constructor(){
         super();        
-        this._reset();  
-        this.addToCart();
+        this._reset();
     }
     static get template () {
         // Template getter must return an instance of HTMLTemplateElement.
@@ -103,69 +102,72 @@ class ProductElement extends PolymerElement {
           font-size: 14px;
         }
         </style>
+        <div>
+        <template is="dom-repeat" items="{{product}}">
+                    <div class="productInfo">
+                    <div class="productImg">
+                    <img src="{{item.image}}">
+                    </div>
+                    <div class="ProdAction">
+                    <div class="prodName">
+                        <h2 id="">[[item.productName]]</h2>
+                        <papper-button on-click="addToCart">Add Product</papper-button>
+                    </div>
+                    <div class="prodDetails">
+                        <div>
+                            <div>
+                                Attribute: value1
+                            </div>
+                            <div>
+                                Attribute: value2
+                            </div>
+                            <div>
+                                Attribute: value3
+                            </div>
+                            <div>
+                                [[item.minOrders]]
+                            </div>
+                            <div>
+                                [[item.location]]
+                            </div>
+                        </div>
+                        <div>
+                            <div>[[item.deliveryTime]]</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </template>    
+        </div>
 
-        <div class="productInfo">
-            <div class="productImg">
-               <img src="{{product.image}}">
-            </div>
-            <div class="ProdAction">
-               <div class="prodName">
-                  <h2 id="">[[product.productName]]</h2>
-                  <papper-button on-click="addToCart">Add Product</papper-button>
-               </div>
-               <div class="prodDetails">
-                  <div>
-                     <div>
-                        Attribute: value1
-                     </div>
-                     <div>
-                        Attribute: value2
-                     </div>
-                     <div>
-                        Attribute: value3
-                     </div>
-                     <div>
-                        [[product.minOrders]]
-                     </div>
-                     <div>
-                        [[product.location]]
-                     </div>
-                  </div>
-                  <div>
-                     <div>[[product.deliveryTime]]</div>
-                  </div>
-               </div>
-            </div>
-         </div>
+            
         `;
       }
     
       static get properties(){
-        return {            
-            product: {
-                type: Array,
-                productName: {
-                    type: String
-                },
-                notify: true
-            }
+        return {
         }
       }
-      addToCart(){ 
-        this.listOfselectedProducts = [];  
+      addToCart(e){ 
         let obj = {
-            prodName:" ",
-            location: " "
-          }
-          //alert(obj.l)
-        obj.prodName = this.product.productName;
-        obj.location = this.product.location;
-        this.push('listOfselectedProducts', obj);
-           //this.isCartEmpty = false;
-        console.log(this.listOfselectedProducts);
-     }     
+           prodName:" ",
+           location: " "
+         }
+       obj.prodName = e.model.item.productName;
+       obj.location = e.model.item.location;
+       this.push('listOfselectedProducts', obj);
+          //this.isCartEmpty = false;
+       console.log(this.listOfselectedProducts);
+
+       var customEvent = new CustomEvent('listEvt', {
+        bubbles: true, 
+        composed: true,
+        detail: {listObj: this.listOfselectedProducts}
+      });
+      this.dispatchEvent(customEvent);
+     }   
   _reset(){
-    //this.listOfselectedProducts = [];
+    this.listOfselectedProducts = [];
     
   }
 }
