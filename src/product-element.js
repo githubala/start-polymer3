@@ -155,6 +155,7 @@ class ProductElement extends PolymerElement {
         return {
         }
       }
+      /*below code used to to created array selProductsList and stored in listObj array object and sent to "product-list" via dispatch event */
       addToCart(e){ 
         let obj = {
            prodName:" ",
@@ -162,18 +163,18 @@ class ProductElement extends PolymerElement {
          }
        obj.prodName = e.model.item.productName;
        obj.location = e.model.item.location;
-       this.push('listOfselectedProducts', obj);
-       console.log(this.listOfselectedProducts);
-
+       this.push('selProductsList', obj);
+       console.log(this.selProductsList);
+         
        var customEvent = new CustomEvent('listEvt', {
         bubbles: true, 
         composed: true,
-        detail: {listObj: this.listOfselectedProducts}
+        detail: {listObj: this.selProductsList}
       });
       this.dispatchEvent(customEvent);
      }   
   _reset(){
-    this.listOfselectedProducts = [];
+    this.selProductsList = [];
     
   }
 }

@@ -39,7 +39,9 @@ class PayPage extends PolymerElement {
             <div class="payPage">
             <checkout-header name="header" show-header="{{showHeader}}"></checkout-header> 
             <! content switcher-->
-            <iron-pages selected="[[page]]" attr-for-selected="name" selected-attribute="visible" fallback-selection="404">            
+            <iron-pages selected="[[page]]" attr-for-selected="name" selected-attribute="visible" fallback-selection="404">   
+            
+            <! display of the list of products -->
             <products-list name="productslist" show-header="{{showHeader}}"></products-list>
                        
             <check-out name="checkout" items={{checkOutProducts}}></check-out>
