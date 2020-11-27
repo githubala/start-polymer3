@@ -209,11 +209,6 @@ class CheckOut extends PolymerElement {
                     <paper-button>- 1 +</paper-button>
                     </div>
                 </template>
-                <!--<div class="item">
-                <p>Monika Stationary Sofa Chocolate</p>
-                <paper-button>- 1 +</paper-button>
-                </div>-->
-
               </div>
               <div class="billDtls">
                 <h4>Bill Details</h4>
