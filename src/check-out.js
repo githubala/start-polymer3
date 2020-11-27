@@ -131,123 +131,123 @@ class CheckOut extends PolymerElement {
             }
           </style>
     
-          <div class="checkoutWrapper paraTextFont">
-            <div class="AdrsLogIn">
-              <div class="userStatus">
-                <div class="tileView">
-                      <h4>
-                      Logged in
-                    </h4>
-                    <div class="nameNContact">
-                      <div>bala | 9032357197</div>
-                      <template is="dom-if" if="{{choosePaymentMethod}}">
-                      <paper-button on-click="changeAddress">CHANGE ADDRESS</paper-button>
-                </template>  
-                      
-                    </div>
-                </div>
-                <template is="dom-if" if="{{!choosePaymentMethod}}">
-                        <div class="userAddress tileView">
-                        <p>Choose delivery address</p>
-                        <div class="oldOrNewAddrs">                  
-                          <div class="currentAddress address">
-                          <h4>Home</h4>
-                            <div>1-5-617, Rd Number 6, Chaitanyapuri, Kothapet, Hyderabad, Telangana 500060, India</div>
-                            <paper-button on-click="gotoPayment">DELIVER HERE </paper-button>
-                          </div>
-                          <div class="newAddress address">
-                          <h4>Add new address</h4>
-                          <div>1-5-617, Rd Number 6, Chaitanyapuri, Kothapet, Hyderabad, Telangana 500060, India</div>
-                          <paper-button>ADD NEW </paper-button>
-                          </div>
-                        </div>
-                    </div>
+<div class="checkoutWrapper paraTextFont">
+<div class="AdrsLogIn">
+   <div class="userStatus">
+      <div class="tileView">
+         <h4>
+            Logged in
+         </h4>
+         <div class="nameNContact">
+            <div>bala | 9032357197</div>
+            <template is="dom-if" if="{{choosePaymentMethod}}">
+               <paper-button on-click="changeAddress">CHANGE ADDRESS</paper-button>
+            </template>
+         </div>
+      </div>
+      <! 
+            delivery address and adding new address
+      -->
+      <template is="dom-if" if="{{!choosePaymentMethod}}">
+         <div class="userAddress tileView">
+            <p>Choose delivery address</p>
+            <div class="oldOrNewAddrs">
+               <div class="currentAddress address">
+                  <h4>Home</h4>
+                  <div>1-5-617, Rd Number 6, Chaitanyapuri, Kothapet, Hyderabad, Telangana 500060, India</div>
+                  <paper-button on-click="gotoPayment">DELIVER HERE </paper-button>
+               </div>
+               <div class="newAddress address">
+                  <h4>Add new address</h4>
+                  <div>1-5-617, Rd Number 6, Chaitanyapuri, Kothapet, Hyderabad, Telangana 500060, India</div>
+                  <paper-button>ADD NEW </paper-button>
+               </div>
+            </div>
+         </div>
+      </template>
+      <div class="payBlock tileView">
 
-                </template>
-                <div class="payBlock tileView">
-                <template is="dom-if" if="{{choosePaymentMethod}}">
-                <p>choose payment method</p>
-
-                <div class="paymentModesel">
-
-                  <div>
-                    <ul>
-                      <li><paper-button on-click="walletEvt">WALLET</paper-button>
-                      <li><paper-button on-click="netbankingEvt">NETBANKING</paper-button></li>
-                    </ul>
-                  </div>
-                  <div>
-                  
+      <! 
+            bill payment modes
+      -->
+         <template is="dom-if" if="{{choosePaymentMethod}}">
+            <p>choose payment method</p>
+            <div class="paymentModesel">
+               <div>
+                  <ul>
+                     <li>
+                        <paper-button on-click="walletEvt">WALLET</paper-button>
+                     <li>
+                        <paper-button on-click="netbankingEvt">NETBANKING</paper-button>
+                     </li>
+                  </ul>
+               </div>
+               <div>
                   <template is="dom-if" if="{{wallet}}">
-                    <div>
-                      <p>AMAZON PAY</P>
-                      <paper-button> pay 20000</paper-button>
-                    </div>
-                    <div>
-                    <p>Phone PAY</P>
-                    <paper-button> pay 20000</paper-button>
-                    </div>
-                  </template>  
-
+                     <div>
+                        <p>AMAZON PAY</P>
+                        <paper-button> pay 20000</paper-button>
+                     </div>
+                     <div>
+                        <p>Phone PAY</P>
+                        <paper-button> pay 20000</paper-button>
+                     </div>
+                  </template>
                   <template is="dom-if" if="{{netBanking}}">
-                    <div>
-                      <p>HDFC</p>
-                      <p>AXIS</p>
-                      <p>STANDARD CHARTERED</p>
-                      <p>SBI</p>
-                      <p>ICICI</p>
-                    </div>
-                  </template> 
-                  
-                  </div>
-
-
-                </div>
-              </template> 
-                </div>
-                              
-              
+                     <div>
+                        <p>HDFC</p>
+                        <p>AXIS</p>
+                        <p>STANDARD CHARTERED</p>
+                        <p>SBI</p>
+                        <p>ICICI</p>
+                     </div>
+                  </template>
+               </div>
             </div>
-            <div class="itemsReviews">
-              <div class="checkOutItems">
-                <div class="scrollBlock">
-                <h4>Selected Items</h4>
-                <template is="dom-repeat" items="{{items}}">
-                    <div class="item">
-                    <p>[[item.prodName]]</p>
-                    <paper-button>- 1 +</paper-button>
-                    </div>
-                </template>
-                </div>                
-              </div>
-              <div class="billDtls">
-                <h4>Bill Details</h4>
-                <div class="billFormat">
-                  <div class="billleft">
-                          <div>product cost</div>   	
-                          <div>delivery cost</div>   	
-                          		
-                  </div>
-                  <div class="billright">
-                        <div>18,000</div>
-                          <div>2,000</div>
-                  </div>
-                  
-                </div>
-                <div class="taxNtotal">
-    <div>
-        <div>tax and charges</div>  
-        <div>TO PAY</div>  
-    </div>
-    <div>
-        <div>500</div>
-        <div>20,500</div>
-    </div>
+         </template>
+      </div>
+   </div>
+   <div class="itemsReviews">
+      <div class="checkOutItems">
+         <div class="scrollBlock">
+            <h4>Selected Items</h4>
+
+            <! 
+              dynamically added iterated products ms from the selected from product list page 
+            -->
+            <template is="dom-repeat" items="{{items}}">
+               <div class="item">
+                  <p>[[item.prodName]]</p>
+                  <paper-button>- 1 +</paper-button>
+               </div>
+            </template>
+         </div>
+      </div>
+      <div class="billDtls">
+         <h4>Bill Details</h4>
+         <div class="billFormat">
+            <div class="billleft">
+               <div>product cost</div>
+               <div>delivery cost</div>
+            </div>
+            <div class="billright">
+               <div>18,000</div>
+               <div>2,000</div>
+            </div>
+         </div>
+         <div class="taxNtotal">
+            <div>
+               <div>tax and charges</div>
+               <div>TO PAY</div>
+            </div>
+            <div>
+               <div>500</div>
+               <div>20,500</div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
-              </div>
-            </div>
-            
-          </div>
         `;
     }    
 
@@ -274,10 +274,6 @@ class CheckOut extends PolymerElement {
         notify: true
       }
       }
-    }
-    walletEvt(){
-    }
-    netBankingEvt(){
     }
     gotoPayment(){
       this.choosePaymentMethod = true;
