@@ -19,6 +19,7 @@ class CheckoutHeader extends PolymerElement {
               position: fixed;
               width: 100%;
               top: 0;
+              z-index:9;
             }
             .checkoutWrapper {
               width: 1200px;

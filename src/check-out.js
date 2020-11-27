@@ -27,7 +27,7 @@ class CheckOut extends PolymerElement {
             .checkoutWrapper {
               padding: 60px;
               margin: 30px;
-              height: 70vh;
+              height: 80vh;
             }
             .AdrsLogIn {
               display: flex;
@@ -121,6 +121,12 @@ class CheckOut extends PolymerElement {
               display: flex;
               justify-content: space-between;
             }
+            .scrollBlock {
+              max-height: 50vh;
+            }
+            .checkOutItems {
+              overflow: auto;
+            }
           </style>
     
           <div class="checkoutWrapper paraTextFont">
@@ -202,6 +208,7 @@ class CheckOut extends PolymerElement {
             </div>
             <div class="itemsReviews">
               <div class="checkOutItems">
+                <div class="scrollBlock">
                 <h4>Selected Items</h4>
                 <template is="dom-repeat" items="{{items}}">
                     <div class="item">
@@ -209,6 +216,7 @@ class CheckOut extends PolymerElement {
                     <paper-button>- 1 +</paper-button>
                     </div>
                 </template>
+                </div>                
               </div>
               <div class="billDtls">
                 <h4>Bill Details</h4>
