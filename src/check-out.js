@@ -1,10 +1,5 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
-let modeOfPay = [
-  {"mode":"wallet"},
-  {"mode":"Credit"},
-  {"mode":"UPI"}
-];
 
 class CheckOut extends PolymerElement {
     constructor(){
@@ -267,12 +262,7 @@ class CheckOut extends PolymerElement {
           type: Boolean,
           notify: true,
           observer: "_netBanking"
-        },         
-        payMode: {
-        type: Array,
-        value: modeOfPay,
-        notify: true
-      }
+        }
       }
     }
     gotoPayment(){
